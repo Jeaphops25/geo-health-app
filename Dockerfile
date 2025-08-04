@@ -1,4 +1,5 @@
-FROM openjdk:8
-ADD target/spring-boot-maven-plugin.jar spring-boot-maven-plugin.jar
-EXPOSE 8081
-ENTRYPOINT ["-java","-jar","spring-boot-maven-plugin.jar"]
+FROM eclipse-temurin:17-jdk-jammy
+WORKDIR /app
+COPY target/*.jar app.jar 
+EXPOSE 8080  # Port standard Spring Boot
+ENTRYPOINT ["java", "-jar", "app.jar"]
