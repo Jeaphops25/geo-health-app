@@ -104,7 +104,7 @@ jobs:
       - name: Download JAR file artifact
         uses: actions/download-artifact@v4
         with:
-          name: geo_app-jar
+          name: geo-health-app-jar
           path: target/
 
       - name: Login to Amazon ECR
@@ -112,7 +112,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build Docker image
-        run: docker build -t geo_app:${{ github.sha }} .
+        run: docker build -t dev:${{ github.sha }} .
 
       - name: Tag image for ECR
         run: |
